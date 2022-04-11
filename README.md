@@ -1,6 +1,6 @@
 # PB138 projekt
 
-## Team
+## Tým
 UČO | JMÉNO
 --- | ---
 484993 | Dominik Lašo
@@ -9,5 +9,5 @@ UČO | JMÉNO
 492991 | Vojtěch Nájemník
 
 ## O projektu
-**Bazoš**
+### **Bazoš**
 Umožňuje zadat uživatelům seznam nabídek/poptávek na bazaru. Každá nabídka/poptávka obsahuje název, popisek, očekávanou cenu a kontakt. Nabídky jsou kategorizovány.
