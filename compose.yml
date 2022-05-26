@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  database:
+    image: postgres:alpine
+    restart: always
+    ports:
+      - 127.0.0.1:5432:5432
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-nbu123}
+      - POSTGRES_DB=${POSTGRES_DB:-bazosdb}
+    volumes:
+      - bazos-storage:/var/lib/postgresql/data
+
+volumes:
+  bazos-storage:
