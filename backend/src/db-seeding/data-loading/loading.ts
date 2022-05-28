@@ -1,5 +1,5 @@
 import { Result } from "@badrap/result";
-import { readFile } from "fs";
+import { readFile, readFileSync } from "fs";
 import YAML from "yaml";
 
 import type YamlParsedDTO from "../types/yaml-types";
@@ -7,13 +7,10 @@ import type YamlParsedDTO from "../types/yaml-types";
 
 export const loadYamlData = async (filePath: string): Promise<Result<string>> => {
     try {
-        readFile(filePath, "utf-8", (err, yamlData) => {
-            if (err) {
-                return Result.err();
-            }
+        
+        const data: string = readFileSync(filePath, "utf-8");
 
-            return Result.ok(yamlData);
-        });
+        return Result.ok(data);
     
     } catch (e) {
         console.log(`Data loading from ${filePath} failed with ${e}`);
