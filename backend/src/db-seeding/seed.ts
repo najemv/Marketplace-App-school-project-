@@ -24,7 +24,7 @@ const seed = async () => {
 
     const seededUsers = await seedUsers(users);
 
-    if (seedUsers.isErr) {
+    if (seededUsers.isErr) {
         console.log(`User seeding failed: ${seededUsers.error.message}`);
         return;
     }
