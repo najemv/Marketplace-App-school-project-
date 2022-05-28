@@ -1,0 +1,54 @@
+users:
+  - email: "jozkomrkvicka@gmail.com"
+    nickname: "jozinko"
+    offers:
+      - title: "VW Golf 3"
+        description: "Cipnuty golfik, v podstate ferrari"
+        price: 60000.0
+        place: "Senica"
+        categories:
+          - name: "car"
+        photos:
+          - path: "./pls/edit/me"
+            description: "pls edit me"
+      - title: "Audi A6 Combi"
+        description: "Vitaz Tuning zraz 2012 - kategoria Srot roka"
+        price: 85000.0
+        place: "Kuty"
+        categories:
+          - name: "car"
+        photos:
+          - path: "./pls/edit/me/as/well"
+            description: "pls edit me as well"
+          - path: "./pls/edit/me/as/well2"
+            description: "pls edit me as well 2"
+      - title: "Stolicka"
+        description: "Vybite zuby count - 17, velmi pevna"
+        price: 500.0
+        place: "Bratislava"
+        categories:
+          - name: "furniture"
+        photos:
+          - path: "./pls/edit/me3"
+            description: "pls edit me 3"
+  - email: "ferko@gmail.com"
+    nickname: "feri"
+    offers:
+      - title: "Hrniec"
+        description: "Novy hrniec, dovod predaja: nehreje sam od seba"
+        price: 1000.0
+        place: "Kosice"
+        categories:
+          - name: "kitchen"
+        photos:
+          - path: "./pls/edit/me"
+            description: "pls edit me"
+      - title: "Skrinka"
+        description: "Kvalitna, ale vrzgaju dvierka"
+        price: 2000.0
+        place: "Sladkovicovo"
+        categories:
+          - name: "furniture"
+        photos:
+          - path: "./pls/edit/me3"
+            description: "pls edit me 3"
