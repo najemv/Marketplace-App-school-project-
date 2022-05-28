@@ -48,18 +48,30 @@ const createOffer = async (offer: OfferDTO, userId: number) => {
         },
     });
 
-    offer.categories.map(cat => createCategory(cat, currOffer.id));
+    offer.categories.map(cat => upsertCategory(cat, currOffer.id));
 
     offer.photos.map(photo => createPhoto(photo, currOffer.id))
 }
 
 
-const createCategory = async (category: CategoryDTO, offerId: number) => {
-    await prisma.category.create({
-        data: {
-            name: category.name,
+const upsertCategory = async (cat: CategoryDTO, offerId: number) => {
+    await prisma.category.upsert({
+        where: {
+            name: cat.name,
+        },
+        update: {
             offers: {
-                connect: [{ id: offerId }],
+                connect: {
+                     id: offerId 
+                },
+            },
+        },
+        create: {
+            name: cat.name,
+            offers: {
+                connect: {
+                    id: offerId,
+                },
             },
         },
     });
