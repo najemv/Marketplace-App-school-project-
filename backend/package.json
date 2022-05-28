@@ -4,6 +4,7 @@
   "description": "PB138 2022 Bazos team project",
   "scripts": {
     "start": "SET PORT=4000 && nodemon src/index.ts",
+    "seed": "ts-node src/db-seeding/seed.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
