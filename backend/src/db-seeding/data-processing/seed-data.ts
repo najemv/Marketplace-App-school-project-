@@ -27,7 +27,9 @@ const createUser = async (user: UserDTO) => {
     });
 
     if (user.offers) {
-        user.offers.map(offer => createOffer(offer, currUser.id));
+        for (const offer of user.offers) {
+            await createOffer(offer, currUser.id);
+        }
     }
 }
 
@@ -48,9 +50,13 @@ const createOffer = async (offer: OfferDTO, userId: number) => {
         },
     });
 
-    offer.categories.map(cat => upsertCategory(cat, currOffer.id));
-
-    offer.photos.map(photo => createPhoto(photo, currOffer.id))
+    for (const category of offer.categories) {
+        await upsertCategory(category, currOffer.id);
+    }
+    
+    for (const photo of offer.photos) {
+        await createPhoto(photo, currOffer.id);
+    }
 }
 
 
@@ -62,7 +68,7 @@ const upsertCategory = async (cat: CategoryDTO, offerId: number) => {
         update: {
             offers: {
                 connect: {
-                     id: offerId 
+                     id: offerId,
                 },
             },
         },
@@ -85,7 +91,7 @@ const createPhoto = async (photo: PhotoDTO, offerId: number) => {
             description: photo.path,
             offer: {
                 connect: { 
-                    id: offerId 
+                    id: offerId,
                 },
             },
         },
