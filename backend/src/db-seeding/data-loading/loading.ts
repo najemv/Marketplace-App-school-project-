@@ -1,5 +1,5 @@
 import { Result } from "@badrap/result";
-import { readFile, readFileSync } from "fs";
+import { readFile } from "fs";
 import YAML from "yaml";
 
 import type YamlParsedDTO from "../types/yaml-types";
