@@ -10,7 +10,7 @@ users:
         categories:
           - name: "car"
         photos:
-          - path: "./pls/edit/me"
+          - path: "../static/offer-photos/default-image.png"
             description: "pls edit me"
       - title: "Audi A6 Combi"
         description: "Vitaz Tuning zraz 2012 - kategoria Srot roka"
@@ -20,9 +20,9 @@ users:
         categories:
           - name: "car"
         photos:
-          - path: "./pls/edit/me/as/well"
+          - path: "../static/offer-photos/default-image.png"
             description: "pls edit me as well"
-          - path: "./pls/edit/me/as/well2"
+          - path: "../static/offer-photos/default-image.png"
             description: "pls edit me as well 2"
       - title: "Stolicka"
         description: "Vybite zuby count - 17, velmi pevna"
@@ -32,7 +32,7 @@ users:
         categories:
           - name: "furniture"
         photos:
-          - path: "./pls/edit/me3"
+          - path: "../static/offer-photos/default-image.png"
             description: "pls edit me 3"
   - email: "ferko@gmail.com"
     nickname: "feri"
@@ -45,7 +45,7 @@ users:
         categories:
           - name: "kitchen"
         photos:
-          - path: "./pls/edit/me"
+          - path: "../static/offer-photos/default-image.png"
             description: "pls edit me"
       - title: "Skrinka"
         description: "Kvalitna, ale vrzgaju dvierka"
@@ -55,5 +55,5 @@ users:
         categories:
           - name: "furniture"
         photos:
-          - path: "./pls/edit/me3"
+          - path: "../static/offer-photos/default-image.png"
             description: "pls edit me 3"
