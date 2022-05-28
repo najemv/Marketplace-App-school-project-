@@ -12,13 +12,13 @@ users:
         photos:
           - path: "../static/offer-photos/default-image.png"
             description: "pls edit me"
-      - title: "Audi A6 Combi"
-        description: "Vitaz Tuning zraz 2012 - kategoria Srot roka"
-        price: 85000.0
+      - title: "ASUS"
+        description: "Velmo rychly pocitac"
+        price: 18500.0
         place: "Kuty"
         finished: False
         categories:
-          - name: "car"
+          - name: "computer"
         photos:
           - path: "../static/offer-photos/default-image.png"
             description: "pls edit me as well"
@@ -47,13 +47,13 @@ users:
         photos:
           - path: "../static/offer-photos/default-image.png"
             description: "pls edit me"
-      - title: "Skrinka"
-        description: "Kvalitna, ale vrzgaju dvierka"
-        price: 2000.0
+      - title: "Kladivo"
+        description: "bum bum a vas problem je prec"
+        price: 300.0
         place: "Sladkovicovo"
         finished: True
         categories:
-          - name: "furniture"
+          - name: "tools"
         photos:
           - path: "../static/offer-photos/default-image.png"
             description: "pls edit me 3"
