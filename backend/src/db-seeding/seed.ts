@@ -2,7 +2,7 @@ import { loadYamlData, parseYamlData } from "./data-loading/loading"
 import { seedUsers } from "./data-processing/seed-data";
 import { UserDTO } from "./types/yaml-types";
 
-const yamlSeedDataPath = "../../seed-data.yml"
+const yamlSeedDataPath = "./seed-data/seed-data.yml"
 
 
 const seed = async () => {
