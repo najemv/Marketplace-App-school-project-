@@ -3,17 +3,17 @@ export default interface YamlParsedDTO {
 }
 
 export interface UserDTO {
-    email: String;
-    nickname: String;
+    email: string;
+    nickname: string;
 
     offers?: OfferDTO[];
 }
 
 export interface OfferDTO {
-    title: String;
-    description: String;
-    price: Number;
-    place: String;
+    title: string;
+    description: string;
+    price: number;
+    place: string;
     finished: boolean;
 
     categories: CategoryDTO[];
@@ -21,10 +21,10 @@ export interface OfferDTO {
 }
 
 export interface CategoryDTO {
-    name: String;
+    name: string;
 }
 
 export interface PhotoDTO {
-    path: String;
-    description: String;
+    path: string;
+    description: string;
 }
