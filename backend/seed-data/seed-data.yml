@@ -12,13 +12,13 @@ users:
         photos:
           - path: "../static/offer-photos/default-image.png"
             description: "pls edit me"
-      - title: "ASUS"
-        description: "Velmo rychly pocitac"
-        price: 18500.0
+      - title: "Audi A6 Kombi"
+        description: "Vitaz Tuning zraz 2012 - kategoria Srot roka"
+        price: 78500.0
         place: "Kuty"
         finished: False
         categories:
-          - name: "computer"
+          - name: "car"
         photos:
           - path: "../static/offer-photos/default-image.png"
             description: "pls edit me as well"
@@ -57,3 +57,5 @@ users:
         photos:
           - path: "../static/offer-photos/default-image.png"
             description: "pls edit me 3"
+  - email: "jankohrasko@gmail.com"
+    nickname: "hrasok"
