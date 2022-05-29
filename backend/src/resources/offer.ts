@@ -5,6 +5,35 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { assert } from 'console';
 
 
+export const getAll = async (req: Request, res: Response) => {
+  const offers = await prisma.offer.findMany({
+    select: {
+      id: true,
+      title: true,
+      description: true,
+      price: true,
+      place: true,
+      createdAt: true,
+      updatedAt: true,
+      finished: true,
+      author: {
+        select: {
+          nickname: true,
+          profilePicture: true,
+        }
+      },
+      categories: true,
+      photos: true
+    }
+  });
+
+  return res.status(200).send({
+    status: "success",
+    data: offers
+  });
+
+};
+
 export const getById = async (req: Request, res: Response) => {
   const id = Number(req.params.id);
   if (isNaN(id)) {
@@ -28,7 +57,12 @@ export const getById = async (req: Request, res: Response) => {
       createdAt: true,
       updatedAt: true,
       finished: true,
-      author: true,
+      author: {
+        select: {
+          nickname: true,
+          profilePicture: true,
+        }
+      },
       categories: true,
       photos: true
     }

@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import {category, offer} from "./resources";
+import {category, offer, user} from "./resources";
 import { off } from "process";
 const api = express();
 const port = process.env.PORT ?? 4000;
@@ -20,10 +20,12 @@ api.get("/", (req, rsp) => {
 // Gets list of category names (for panel)
 api.get("/category", category.list);
 // Gets all offers in given category
-api.get("/category/:name", category.get);
+api.get("/category/:id", category.get);
 
 // Gets detailed info about one offer
 api.get("/offer/:id", offer.getById);
+// Gets all offers
+api.get("/offer", offer.getAll);
 // Creates new offer
 api.post("/offer", offer.createOffer);
 // Updated offer
@@ -31,6 +33,11 @@ api.put("/offer/:id", offer.updateOffer);
 // Deletes offer
 api.delete("/offer/:id", offer.deleteOffer);
 
+
+api.get("/user/:nickname", user.getUser);
+api.post("/user", user.createUser);
+api.put("user/:nickaname", user.UpdateUser);
+api.post("login", user.login);
 
 //api.get("/user", user.get);
 //api.get("/user/:id", user.getById);

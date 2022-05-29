@@ -11,25 +11,31 @@ export const list = async (req: Request, res: Response) => {
 }
 
 export const get = async (req: Request, res: Response) => {
-  const name = req.params.name!;
+  const id = Number(req.params.id!);
+
   const data = await prisma.category.findFirst({
     where: {
-      name: name
+      id: id
     },
     select: {
       id: true,
       name: true,
       offers: {
+        where: {
+          finished: false
+        },
         select: {
           id: true,
           title: true,
           price: true,
           place: true,
-          createdAt: true,
+          updatedAt: true,
+          finished: true,
           author: {
             select: {
               id: true,
-              nickname: true
+              nickname: true,
+              profilePicture: true
             }
           },
           photos: true
