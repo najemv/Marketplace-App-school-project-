@@ -1,6 +1,9 @@
 users:
   - email: "jozkomrkvicka@gmail.com"
     nickname: "jozinko"
+    password: "heslo"
+    profilePicture: "../static/user-photos/default-avatar-profile-icon.png"
+    description: "Ahoj já jsem jozko ma mam super nabídky"
     offers:
       - title: "VW Golf 3"
         description: "Cipnuty golfik, v podstate ferrari"
@@ -36,6 +39,9 @@ users:
             description: "pls edit me 3"
   - email: "ferko@gmail.com"
     nickname: "feri"
+    password: "password"
+    profilePicture: "../static/user-photos/default-avatar-profile-icon.png"
+    description: "Ferko jsem líný si psát popisek"
     offers:
       - title: "Hrniec"
         description: "Novy hrniec, dovod predaja: nehreje sam od seba"
@@ -59,3 +65,6 @@ users:
             description: "pls edit me 3"
   - email: "jankohrasko@gmail.com"
     nickname: "hrasok"
+    password: "qwertz"
+    profilePicture: "../static/user-photos/default-avatar-profile-icon.png"
+    description: "Nemám žádné nabídky, jsem na stimulantech"

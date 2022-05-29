@@ -23,6 +23,9 @@ const createUser = async (user: UserDTO) => {
         data: {
             email: user.email,
             nickname: user.nickname,
+            password: user.password,
+            profilePicture: user.profilePicture,
+            description: user.description
         },
     });
 
@@ -88,7 +91,7 @@ const createPhoto = async (photo: PhotoDTO, offerId: number) => {
     await prisma.photo.create({
         data: {
             path: photo.path,
-            description: photo.path,
+            description: photo.description,
             offer: {
                 connect: { 
                     id: offerId,
