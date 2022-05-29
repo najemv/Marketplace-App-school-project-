@@ -14,7 +14,7 @@ export const getById = async (req: Request, res: Response) => {
       message: "Invalid ID."
     });
   }
-
+  
   const offer = await prisma.offer.findUnique({
     where: {
       id: id
@@ -161,7 +161,9 @@ export const updateOffer = async (req: Request, res: Response) => {
           })
         },
         photos: {
-          set: [],
+          deleteMany: {
+            offerId: id
+          },
           createMany: {
             data: data.photos
           }

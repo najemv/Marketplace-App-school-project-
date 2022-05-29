@@ -17,12 +17,18 @@ api.get("/", (req, rsp) => {
   });
 });
 
+// Gets list of category names (for panel)
 api.get("/category", category.list);
+// Gets all offers in given category
 api.get("/category/:name", category.get);
 
+// Gets detailed info about one offer
 api.get("/offer/:id", offer.getById);
+// Creates new offer
 api.post("/offer", offer.createOffer);
+// Updated offer
 api.put("/offer/:id", offer.updateOffer);
+// Deletes offer
 api.delete("/offer/:id", offer.deleteOffer);
 
 
