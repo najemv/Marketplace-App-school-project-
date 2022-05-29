@@ -50,7 +50,7 @@ model Offer {
 
 model Category {
   id Int            @id @default(autoincrement())
-  name String       @db.VarChar(150)
+  name String       @db.VarChar(150) @unique
 
   offers Offer[]    
 }
