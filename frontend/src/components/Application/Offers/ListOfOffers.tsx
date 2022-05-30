@@ -29,11 +29,11 @@ export const ListOfOffers = () => {
   }
 
   return (
-    <main className="mx-10">
-      <h1>{name}</h1>
-      <div>
+    <main className="mx-10 w-full">
+      <h1 className="font-bold font-sans text-2xl mt-10">{name.toUpperCase()}</h1>
+      <ul role="list" className="divide-y divide-solid">
         {offers.map((offer) => <OfferCard key={offer.id} {...offer}/>)}
-      </div>
+      </ul>
     </main>
   );
 };
