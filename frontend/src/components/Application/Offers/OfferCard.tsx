@@ -2,11 +2,15 @@ import {Link} from "react-router-dom";
 import {OfferPreview} from "../../../types";
 import offerPhoto from '../../../../../backend/static/offer-photos/default-image.png';
 
-export const formatPrice = function (amount: number): string {
-  return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") + "€";
-};
+
 
 export const OfferCard = ({id, title, price, place, author, photos, finished}: OfferPreview) => {
+  const formatPrice = function (amount: number): string {
+    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") + "€";
+  };
+
+  const formattedPrice = formatPrice(price);
+
   return (
     <li className="hover:bg-gray-200 h-48 w-full flex flex-row">
       <Link to={`/offer/${id}-${title.toLowerCase()}`} className="m-5 flex w-full">
@@ -21,7 +25,7 @@ export const OfferCard = ({id, title, price, place, author, photos, finished}: O
           </Link>
         </div>
         <div className="w-3/6 justify-end flex">
-          <p className="text-5xl text-medium-candy-apple-red font-bold">{formatPrice(price)}</p>
+          <p className="text-5xl text-medium-candy-apple-red font-bold">{formattedPrice}</p>
         </div>
       </Link>
     </li>
