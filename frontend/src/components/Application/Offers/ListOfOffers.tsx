@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
 import useSWR from "swr";
-import { Category, OfferPreview } from "../../../types";
+import {OfferPreview} from "../../../types";
 import fetcher from "../../../utils/fetcher";
 import OfferCard from "./OfferCard";
 
@@ -15,13 +15,13 @@ export const ListOfOffers = () => {
 
   // Get all offers or offer in single category
   if (!cat_id) {
-    const { data, error } = useSWR(`http://localhost:4000/offer`, fetcher);
+    const {data, error} = useSWR(`http://localhost:4000/offer`, fetcher);
     if (error) return <div>failed to load</div>;
     if (!data) return <div>loading...</div>;
     offers = data.data;
     name = "All offers";
   } else {
-    const { data, error } = useSWR(`http://localhost:4000/category/${cat_id}`, fetcher);
+    const {data, error} = useSWR(`http://localhost:4000/category/${cat_id}`, fetcher);
     if (error) return <div>failed to load</div>;
     if (!data) return <div>loading...</div>;
     offers = data.data.offers;
