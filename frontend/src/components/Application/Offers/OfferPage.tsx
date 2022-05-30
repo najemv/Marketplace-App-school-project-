@@ -4,10 +4,13 @@ import {Offer} from "../../../types";
 import fetcher from "../../../utils/fetcher";
 import backArrow from '../../../../public/assets/left-arrow.svg';
 import offerPhoto from '../../../../../backend/static/offer-photos/default-image.png';
-import {formatPrice} from "./OfferCard";
 
 
 export const OfferPage = () => {
+  const formatPrice = function (amount: number): string {
+    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") + "€";
+  };
+
   const {id} = useParams();
   const offer_id = parseInt(id!);
   const {data, error} = useSWR(`http://localhost:4000/offer/${offer_id}`, fetcher);
@@ -16,6 +19,8 @@ export const OfferPage = () => {
   if (!data) return <div>loading...</div>;
   const offer: Offer = data.data;
   const navigate = useNavigate();
+
+  const formattedPrice = formatPrice(offer.price);
 
   return (
     <div className="m-5 flex">
@@ -29,7 +34,7 @@ export const OfferPage = () => {
             <img className="h-80" src={offerPhoto} alt="Offer image"/>
           </div>
           <div className="w-2/4 mt-12 text-1xl">
-            <p className="text-3xl text-medium-candy-apple-red font-bold">{formatPrice(offer.price)}</p>
+            <p className="text-3xl text-medium-candy-apple-red font-bold">{formattedPrice}</p>
             <p>Town: {offer.place}</p>
             <Link to={`/user/${offer.author.nickname}`}>
               <p className="hover:text-medium-candy-apple-red">Created
