@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Header from "./Header/Header";
 import Index from "./Index/IndexPage";
 import OffersPage from "./Offers/OffersPage";
@@ -9,12 +9,12 @@ export const ApplicationPage = () => {
 
   return (
     <div>
-      <Header />
+      <Header/>
       <Routes>
-        <Route path="offers/*" element={<OffersPage />}/>
-        <Route path='user/:name' element={<UserPage />} />
-        <Route path='offer/:id' element={<OfferPage />} />
-        <Route path='/' element={<Index/>} />
+        <Route path="offers/*" element={<OffersPage/>}/>
+        <Route path='user/:name' element={<UserPage/>}/>
+        <Route path='offer/:id' element={<OfferPage/>}/>
+        <Route path='/' element={<Index/>}/>
       </Routes>
     </div>
   );
