@@ -6,7 +6,15 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'space-cadet': '#273043',
+        'cool-gray': '#9197AE',
+        'mint-cream': '#EFF6EE',
+        'imperial-red': '#F02D3A',
+        'medium-candy-apple-red': '#DD0426',
+      },
+    },
   },
   variants: {
     extend: {},
