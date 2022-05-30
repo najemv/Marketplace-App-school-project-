@@ -1,9 +1,14 @@
+import Header from "../Application/Header/Header";
+import Login from "./Login";
 
 
 export const LoginPage = () => {
 
   return (
-    <div>TODO LOGIN PAGE</div>
+    <div className="flex-col h-screen">
+      <Header />
+      <Login />
+    </div>
   );
 };
 
