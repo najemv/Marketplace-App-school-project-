@@ -6,8 +6,8 @@ export const LoginPage = () => {
 
   return (
     <div className="flex-col h-screen">
-      <Header />
-      <Login />
+      <Header/>
+      <Login/>
     </div>
   );
 };

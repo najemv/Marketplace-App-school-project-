@@ -8,7 +8,7 @@ export const Login = () => {
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
-            id="username" type="text" placeholder="Enter nickname" />
+            id="username" type="text" placeholder="Enter nickname"/>
         </div>
         <div className="mb-6">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
@@ -16,7 +16,7 @@ export const Login = () => {
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
-            id="password" type="password" placeholder="Enter password" />
+            id="password" type="password" placeholder="Enter password"/>
         </div>
         <div className="flex items-center justify-between">
           <button
