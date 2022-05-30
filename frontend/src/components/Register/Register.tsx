@@ -15,7 +15,7 @@ export const Register = () => {
           <div className="w-full md:w-1/2 px-3">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-                   htmlFor="nickname">
+              htmlFor="nickname">
               Nickname
             </label>
             <input
@@ -25,7 +25,7 @@ export const Register = () => {
         </div>
         <div className="flex flex-wrap -mx-3">
           <div className="w-full md:w-4/6 px-3 mb-6 md:mb-0">
-          <label className="block text-gray-700 text-sm font-bold mb-2"
+            <label className="block text-gray-700 text-sm font-bold mb-2"
                    htmlFor="password">
               Password
             </label>
