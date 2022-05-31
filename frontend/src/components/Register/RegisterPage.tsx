@@ -1,8 +1,13 @@
+import Header from "../Application/Header/Header";
+import Register from "./Register";
 
 export const RegisterPage = () => {
 
   return (
-    <div>TODO REGISTRACE</div>
+    <div className="flex-col h-screen">
+      <Header/>
+      <Register/>
+    </div>
   );
 };
 

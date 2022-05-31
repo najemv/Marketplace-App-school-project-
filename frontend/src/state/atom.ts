@@ -3,6 +3,6 @@ import { User } from '../types';
 
 export let loginState = {
   isLoggedIn: false,
-  nickaname: "",
+  nickname: "",
   password: ""
 }

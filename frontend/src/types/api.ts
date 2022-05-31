@@ -37,7 +37,7 @@ export interface OfferPreview {
 export interface Offer extends OfferPreview {
   description: string;
   createdAt: Date;
-  categoeries: CategoryPreview[]
+  categories: CategoryPreview[]
 }
 
 export interface Photo {
