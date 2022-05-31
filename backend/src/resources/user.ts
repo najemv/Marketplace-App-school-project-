@@ -4,11 +4,9 @@ import { Request, Response } from 'express';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 
 const userCreateSchema = object({
-  nickname: string().length(100).required(),
+  nickname: string().max(32).required(),
   email: string().email().required(),
-  password: string().length(100).required(),
-  profilePicture: string().required(),
-  description: string().required()
+  password: string().length(64).required()
   //TODO
 });
 
@@ -33,7 +31,11 @@ export const createUser = async (req: Request, res: Response) => {
     }
 
     await prisma.user.create({
-      data: data
+      data: {
+        ...data,
+        description: "",
+        profilePicture: ""
+      }
     });
 
     return res.status(201).send({
@@ -186,8 +188,8 @@ export const getUser = async (req: Request, res: Response) => {
 
 
 const loginSchema = object({
-  nickname: string().length(100).required(),
-  password: string().length(100).required()
+  nickname: string().max(32).required(),
+  password: string().length(64).required()
 });
 
 export const login = async (req: Request, res: Response) => {
@@ -199,15 +201,16 @@ export const login = async (req: Request, res: Response) => {
         nickname: data.nickname
       }
     });
+    
 
     if (user === null) {
       return res.status(404).send({
         status: "error",
         data: {},
-        message: "User does not exists"
+        message: "Nickname does not exists"
       });
     }
-
+    
     if (user.password != data.password) {
       return res.status(400).send({
         status: "error",
@@ -239,6 +242,42 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
+
+const checkExistenceSchema = object({
+  nickname: string(),
+  email: string()
+});
+
+export const checkExistence = async (req: Request, res: Response) => {
+  try {
+    const data = await checkExistenceSchema.validate(req.body);
+    const user = await prisma.user.findUnique({
+      where: data
+    });
+
+    return res.status(200).send({
+      status: "success",
+      data: {
+        exists: user !== null
+      }
+    });
+
+  } catch (e) {
+    if (e instanceof ValidationError) {
+      return res.status(400).send({
+        status: "error",
+        data: e.errors,
+        message: e.message
+      });
+    }
+    return res.status(500).send({
+      status: "error",
+      data: {},
+      message: "Internal server error"
+    });
+
+  }
+};
 
 
 

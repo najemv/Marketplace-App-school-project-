@@ -35,9 +35,12 @@ api.delete("/offer/:id", offer.deleteOffer);
 
 
 api.get("/user/:nickname", user.getUser);
-api.post("/user", user.createUser);
-api.put("user/:nickaname", user.UpdateUser);
-api.post("login", user.login);
+api.put("/user/:nickaname", user.UpdateUser);
+
+api.post("/login", user.login);
+api.post("/register", user.createUser);
+
+api.post("/user/check", user.checkExistence);
 
 //api.get("/user", user.get);
 //api.get("/user/:id", user.getById);

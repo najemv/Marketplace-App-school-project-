@@ -121,7 +121,7 @@ export const createOffer = async (req: Request, res: Response) => {
 
     return res.status(201).send({
       status: "success",
-      data: {},
+      data: newOffer,
       message: "Offer was successfully created"
     });
   

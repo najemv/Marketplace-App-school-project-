@@ -20,9 +20,7 @@ export const OfferCard = ({id, title, price, place, author, photos, finished}: O
         <div className="ml-3 w-2/6 justify-start">
           <h1 className="text-3xl">{title}</h1>
           <p className="text-1xl">{place}</p>
-          <Link className="hover:text-medium-candy-apple-red flex w-min" to={`/user/${author.nickname}`}>
-            <p className="text-1xl">{author.nickname.toString().toUpperCase()}</p>
-          </Link>
+          <p className="text-1xl">{author.nickname.toString().toUpperCase()}</p>
         </div>
         <div className="w-3/6 justify-end flex">
           <p className="text-5xl text-medium-candy-apple-red font-bold">{formattedPrice}</p>

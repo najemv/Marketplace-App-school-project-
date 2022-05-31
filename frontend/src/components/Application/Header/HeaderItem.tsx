@@ -12,5 +12,7 @@ export const HeaderItem = ({text, linkTo}: HeaderItemProps) => {
         {text}
       </Link>
     </li>
-  )
-}
+  );
+};
+
+export default HeaderItem;

@@ -7,21 +7,20 @@ import offerPhoto from '../../../../../backend/static/offer-photos/default-image
 
 
 export const OfferPage = () => {
-  const formatPrice = function (amount: number): string {
-    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") + "€";
-  };
-
   const {id} = useParams();
   const offer_id = parseInt(id!);
   const {data, error} = useSWR(`http://localhost:4000/offer/${offer_id}`, fetcher);
+  const navigate = useNavigate();
   console.log(data);
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
   const offer: Offer = data.data;
-  const navigate = useNavigate();
-
+  
+  const formatPrice = function (amount: number): string {
+    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") + "€";
+  };
   const formattedPrice = formatPrice(offer.price);
-
+  
   return (
     <div className="m-5 flex">
       <div className="w-full">

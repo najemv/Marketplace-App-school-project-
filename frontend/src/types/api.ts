@@ -1,7 +1,7 @@
 
 export interface UserPreview {
   id: number;
-  nickname: number;
+  nickname: string;
   profilePicture: string;
 }
 
