@@ -14,7 +14,7 @@ export const Header = () => {
       <Searchbar/>
       <div>
         {loginData.isLoggedIn &&
-        <ul className="flex text-mint-cream">
+        <ul className="flex text-mint-cream items-center">
           <CreateOfferButton />
           <UserInfo nickname={loginData.nickname} />
         </ul>
