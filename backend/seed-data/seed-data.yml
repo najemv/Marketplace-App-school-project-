@@ -2,7 +2,7 @@ users:
   - email: "jozkomrkvicka@gmail.com"
     nickname: "jozinko"
     password: "heslo"
-    profilePicture: "../static/user-photos/default-avatar-profile-icon.png"
+    profilePicture: "User-profil-pic-2.png"
     description: "Ahoj já jsem jozko ma mam super nabídky"
     offers:
       - title: "VW Golf 3"
@@ -13,8 +13,8 @@ users:
         categories:
           - name: "car"
         photos:
-          - path: "../static/offer-photos/default-image.png"
-            description: "pls edit me"
+          - path: "vw-gold-3.jpg"
+            description: "brm brm deutsch"
       - title: "Audi A6 Kombi"
         description: "Vitaz Tuning zraz 2012 - kategoria Srot roka"
         price: 78500.0
@@ -23,10 +23,10 @@ users:
         categories:
           - name: "car"
         photos:
-          - path: "../static/offer-photos/default-image.png"
-            description: "pls edit me as well"
-          - path: "../static/offer-photos/default-image.png"
-            description: "pls edit me as well 2"
+          - path: "audi-a6-combi.jpg"
+            description: "first image"
+          - path: "audi-a6-combi.jpg"
+            description: "second image, but same"
       - title: "Stolicka"
         description: "Vybite zuby count - 17, velmi pevna"
         price: 500.0
@@ -35,12 +35,12 @@ users:
         categories:
           - name: "furniture"
         photos:
-          - path: "../static/offer-photos/default-image.png"
-            description: "pls edit me 3"
+          - path: "stolicka.jpg"
+            description: "chair to sit"
   - email: "ferko@gmail.com"
     nickname: "feri"
     password: "password"
-    profilePicture: "../static/user-photos/default-avatar-profile-icon.png"
+    profilePicture: "User-profil-pic-3.png"
     description: "Ferko jsem líný si psát popisek"
     offers:
       - title: "Hrniec"
@@ -51,8 +51,8 @@ users:
         categories:
           - name: "kitchen"
         photos:
-          - path: "../static/offer-photos/default-image.png"
-            description: "pls edit me"
+          - path: "hrnec.jpg"
+            description: "kiss the cook"
       - title: "Kladivo"
         description: "bum bum a vas problem je prec"
         price: 300.0
@@ -61,10 +61,10 @@ users:
         categories:
           - name: "tools"
         photos:
-          - path: "../static/offer-photos/default-image.png"
-            description: "pls edit me 3"
-  - email: "jankohrasko@gmail.com"
-    nickname: "hrasok"
-    password: "qwertz"
-    profilePicture: "../static/user-photos/default-avatar-profile-icon.png"
+          - path: "kladivo.jpg"
+            description: "bum rum bum"
+  - email: "test@test.test"
+    nickname: "test"
+    password: "37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578"
+    profilePicture: "User-profil-pic-1.png"
     description: "Nemám žádné nabídky, jsem na stimulantech"
