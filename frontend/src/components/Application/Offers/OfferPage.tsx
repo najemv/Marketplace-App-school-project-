@@ -1,9 +1,11 @@
 import {Link, useNavigate, useParams} from "react-router-dom";
+import SimpleImageSlider from 'react-simple-image-slider';
 import useSWR from "swr";
 import {Offer} from "../../../types";
 import fetcher from "../../../utils/fetcher";
 import backArrow from '../../../../public/assets/left-arrow.svg';
 import offerPhoto from '../../../../../backend/static/offer-photos/default-image.png';
+import '../../../../public/assets/imageSlider.css'
 
 
 export const OfferPage = () => {
@@ -28,23 +30,29 @@ export const OfferPage = () => {
           <img src={backArrow} alt="Return button"/>
         </div>
         <div className="m-6 flex">
-          <div className="w-1/4">
-            <h1 className="text-5xl mb-2">{offer.title}</h1>
-            <img className="h-80" src={offerPhoto} alt="Offer image"/>
-          </div>
-          <div className="w-2/4 mt-12 text-1xl">
-            <p className="text-3xl text-medium-candy-apple-red font-bold">{formattedPrice}</p>
-            <p>Town: {offer.place}</p>
-            <Link to={`/user/${offer.author.nickname}`}>
-              <p className="hover:text-medium-candy-apple-red">Created
-                by: {offer.author.nickname.toString().toUpperCase()}</p>
-            </Link>
-
-            <p>{offer.description}</p>
-            <p>Created at: {offer.createdAt.toString()}</p>
-
+          <div className="w-3/4 mr-3">
+            <h1 className="text-5xl mb-3">{offer.title}</h1>
+            <SimpleImageSlider
+              width={900}
+              height={500}
+              images={images}
+              showBullets={true}
+              showNavs={true}
+            />
           </div>
           <div className="w-1/4">
+            <div className="text-1xl">
+              <p className="text-3xl text-medium-candy-apple-red font-bold">{formattedPrice}</p>
+              <p>Town: {offer.place}</p>
+              <Link to={`/user/${offer.author.nickname}`}>
+                <p className="hover:text-medium-candy-apple-red">Created
+                  by: {offer.author.nickname.toString().toUpperCase()}</p>
+              </Link>
+
+              <p>{offer.description}</p>
+              <p>Created at: {offer.createdAt.toString()}</p>
+
+            </div>
             <button
               className="btn mt-10 inline-block px-6 py-2 border-2 border-imperial-red text-imperial-red font-medium text-3xl leading-tight uppercase rounded hover:bg-medium-candy-apple-red focus:text-mint-cream hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
               BUY
