@@ -64,16 +64,16 @@ export const Register = () => {
     return "Error";
   };
 
-  
+
   if (confirmation) {
     return <Info message="Your accout was successfully created" />;
   }
 
   return (
-    <div className="grid place-items-center h-5/6">
+    <div className="grid place-items-center mt-32">
       <form className="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div className="flex flex-col flex-wrap -mx-3 mb-6">
+          <div className="w-full px-3 mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2"
                    htmlFor="email">
               Email
@@ -94,7 +94,7 @@ export const Register = () => {
             />
             <ErrorMessage errors={errors} name="email" />
           </div>
-          <div className="w-full md:w-1/2 px-3">
+          <div className="w-full px-3 mb-6">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="nickname">
@@ -124,9 +124,7 @@ export const Register = () => {
             />
             <ErrorMessage errors={errors} name="nickname" />
           </div>
-        </div>
-        <div className="flex flex-wrap -mx-3">
-          <div className="w-full md:w-4/6 px-3 mb-6 md:mb-0">
+          <div className="w-full px-3 mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2"
                    htmlFor="password">
               Password
@@ -146,8 +144,8 @@ export const Register = () => {
             />
             <ErrorMessage errors={errors} name="password" />
           </div>
-          <div className="flex flex-wrap mt-7 ml-0 md:ml-12">
-            <div className="w-full md:w-1/2 px-3">
+          <div className="flex justify-center">
+            <div>
               <button
                 className="bg-imperial-red hover:bg-medium-candy-apple-red text-white font-bold py-2 px-4 rounded border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
                 type="submit">
