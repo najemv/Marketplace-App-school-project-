@@ -45,8 +45,8 @@ export const UserPage = () => {
         </div>
       </div>
       <div className="lg:w-3/4 flex flex-wrap">
-        <p className="text-2xl 2xl:w-full">Offers:</p>
-        {user.offers.length > 0 ? user.offers.map((offer) => <OfferCard key={offer.id} {...offer} />) : "No offers"}
+        <p className="text-2xl w-full">{user.offers.length > 0 ? "Offers:" : "No offers"}</p>
+        {user.offers.map((offer) => <OfferCard key={offer.id} {...offer} />)}
       </div>
     </div>
   );
