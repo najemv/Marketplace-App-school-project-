@@ -17,12 +17,14 @@ export const OfferPage = () => {
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
   const offer: Offer = data.data;
-  
+  const mainImage = offer.photos.at(0)?.path;
+  const images = offer.photos.map(x => 'http://localhost:4000/static/offer-photos/' + x.path);
+
   const formatPrice = function (amount: number): string {
     return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") + "€";
   };
   const formattedPrice = formatPrice(offer.price);
-  
+
   return (
     <div className="m-5 flex">
       <div className="w-full">
