@@ -42,7 +42,7 @@ export const UserPage = () => {
       </div>
       <div className="w-3/4">
         <p className="text-2xl">Offers:</p>
-        {user.offers.map((offer) => <OfferCard key={offer.id} {...offer} />)}
+        {user.offers.length > 0 ? user.offers.map((offer) => <OfferCard key={offer.id} {...offer} />) : "No offers"}
       </div>
     </div>
   );
