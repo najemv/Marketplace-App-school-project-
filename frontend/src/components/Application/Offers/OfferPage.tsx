@@ -30,18 +30,23 @@ export const OfferPage = () => {
         <div onClick={() => navigate(-1)} className="h-8 w-8 ring ring-space-cadet rounded mb-2 hover:bg-gray-400">
           <img src={backArrow} alt="Return button"/>
         </div>
-        <div className="m-6 flex">
-          <div className="w-3/4 mr-3">
+        <div className="m-6 flex flex-wrap">
+          <div className="mr-3">
             <h1 className="text-5xl mb-3">{offer.title}</h1>
+            <div className="hidden lg:block">
             <SimpleImageSlider
-              width={900}
+              width={800}
               height={500}
               images={images}
               showBullets={true}
               showNavs={true}
             />
+            </div>
+            <div className="lg:hidden">
+              <img src={images.at(0)} alt="offer image" />
+            </div>
           </div>
-          <div className="w-1/4">
+          <div className="lg:w-1/4">
             <div className="text-1xl">
               <p className="text-3xl text-medium-candy-apple-red font-bold">{formattedPrice}</p>
               <p>Town: {offer.place}</p>
