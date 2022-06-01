@@ -9,10 +9,10 @@ import UserInfo from "./UserInfo";
 export const Header = () => {
   const loginData = useRecoilValue(loginDataAtom);
   return (
-    <header className="sticky top-0 z-50 bg-space-cadet h-20 flex justify-between items-center">
+    <header className="sticky top-0 z-50 bg-space-cadet h-48 lg:h-20 flex flex-col lg:flex-row justify-between items-center">
       <Logo/>
       <Searchbar/>
-      <div>
+      <div className="h-5 mb-8 lg:h-20">
         {loginData.isLoggedIn &&
         <ul className="flex text-mint-cream items-center">
           <CreateOfferButton />
@@ -20,12 +20,12 @@ export const Header = () => {
         </ul>
         }
         {!loginData.isLoggedIn &&
-        <ul className="flex text-mint-cream">
+        <ul className="flex mt-1 text-mint-cream">
           <HeaderItem text="Login" linkTo="/login"/>
           <HeaderItem text="Register" linkTo="/register"/>
         </ul>
         }
-          
+
       </div>
     </header>
   );

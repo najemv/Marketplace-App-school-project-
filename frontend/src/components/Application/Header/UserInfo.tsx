@@ -16,7 +16,7 @@ export const UserInfo = ({nickname}: UserInfoProps) => {
   const setLoginData = useSetRecoilState(loginDataAtom);
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
-  
+
   const user: User = data.data;
 
   const logOut = () => {
@@ -29,7 +29,7 @@ export const UserInfo = ({nickname}: UserInfoProps) => {
 
   return (
 
-    <li className="p-5 mr-5 mt-5 mb-5">
+    <li className="lg:p-5 mr-5 lg:mt-5 lg:mb-5">
       <PopupMenu element={<img
         src={'http://localhost:4000/static/user-photos/'+user.profilePicture}
         alt="Profile picture"

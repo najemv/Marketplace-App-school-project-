@@ -27,9 +27,9 @@ export const ListOfOffers = () => {
   }
 
   return (
-    <main className="mx-10 w-full">
+    <main className="mx-1 lf:mx-10 w-full">
       <h1 className="font-bold font-sans text-2xl mt-10">{name.toUpperCase()}</h1>
-      <ul role="list" className="divide-y divide-solid">
+      <ul role="list" className="divide-y divide-solid flex flex-wrap">
         {offers.map((offer) => <OfferCard key={offer.id} {...offer}/>)}
       </ul>
     </main>

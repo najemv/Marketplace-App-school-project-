@@ -12,9 +12,9 @@ export const OfferCard = ({id, title, price, place, author, photos, finished}: O
   const mainImage = photos?.at(0)?.path;
 
   return (
-    <li className="hover:bg-gray-200 h-48 w-full flex flex-row">
+    <li className="hover:bg-gray-200 h-48 w-full flex flex-row 2xl:w-1/2">
       <Link to={`/offer/${id}-${title.toLowerCase()}`} className="m-5 flex w-full">
-        <div className="w-1/6 flex justify-center">
+        <div className="w-1/6 flex justify-center min-w-max">
           <img className="h-36" src={'http://localhost:4000/static/offer-photos/'+ mainImage} alt="Offer's image"/>
         </div>
         <div className="ml-3 w-2/6 justify-start">
