@@ -95,14 +95,14 @@ export const Login = () => {
         }
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-center">
           <button
             className="bg-imperial-red hover:bg-medium-candy-apple-red text-white font-bold py-2 px-4 rounded border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
             type="submit">
             Sign In
           </button>
         </div>
-        
+
       </form>
     </div>
   );
