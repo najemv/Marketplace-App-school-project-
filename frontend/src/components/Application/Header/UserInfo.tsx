@@ -31,16 +31,20 @@ export const UserInfo = ({nickname}: UserInfoProps) => {
 
     <li className="p-5 mr-5 mt-5 mb-5">
       <PopupMenu element={<img
-        src={userPhoto}
+        src={'http://localhost:4000/static/user-photos/'+user.profilePicture}
         alt="Profile picture"
-        className="h-10"
+        className="h-10 rounded-full"
       />}>
-        <Link to={`/user/${user.nickname}`}>
-          <button>Show profile</button>
-        </Link>
-        <button onClick={logOut}>
-          Logout
-        </button>
+        <div className="h-10 px-3 border-2 border-medium-candy-apple-red hover:bg-medium-candy-apple-red">
+          <Link className="h-9  flex items-center" to={`/user/${user.nickname}`}>
+            <button className="text-xl w-max">Show profile</button>
+          </Link>
+        </div>
+        <div className="h-10 px-3 border-2 border-medium-candy-apple-red hover:bg-medium-candy-apple-red">
+          <button className="h-9 text-xl flex items-center" onClick={logOut}>
+            Logout
+          </button>
+        </div>
       </PopupMenu>
     </li>
   )
