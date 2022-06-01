@@ -51,8 +51,8 @@ export const Edit = (user: User) => {
   }
 
   return (
-    <div className="grid place-items-center mt-24">
-      <form className="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4 w-80" onSubmit={handleSubmit(onSubmit)}>
+    <div className="grid place-items-center mt-20">
+      <form className="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4 w-96" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col flex-wrap -mx-3 mb-6">
           <div className="w-full px-3 mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2"
@@ -126,11 +126,10 @@ export const Edit = (user: User) => {
                    htmlFor="about">
               About
             </label>
-            <input
+            <textarea
               value={user.description}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
               id="about"
-              type="text"
               placeholder="Enter something about yourself"
               {...register("about")}
             />
