@@ -27,12 +27,12 @@ export const PopupMenu = ({element, children}: PopupMenuProps) => {
       </button>
       {isShownMenu &&
       <div
-        className="absolute bg-white text-black h-full px-10 -left-20"
+        className="absolute bg-white text-black h-20 -left-24"
       >
         {children}
       </div>
       }
-      
+
     </div>
   );
 };
