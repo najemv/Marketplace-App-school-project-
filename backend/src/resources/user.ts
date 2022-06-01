@@ -158,6 +158,7 @@ export const getUser = async (req: Request, res: Response) => {
           place: true,
           updatedAt: true,
           finished: true,
+          photos: true,
           author: {
             select: {
               id: true,
