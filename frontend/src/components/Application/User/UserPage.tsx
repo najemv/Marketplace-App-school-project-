@@ -24,7 +24,9 @@ export const UserPage = () => {
           <img src={backArrow} alt="Return button"/>
         </div>
         <div>
-          <img className="h-52" src={userPhoto} alt="User Photo"/>
+          <div className="flex justify-center mb-4">
+            <img className="h-52 rounded-full" src={'http://localhost:4000/static/user-photos/'+user.profilePicture} alt="User Photo"/>
+          </div>
           <p>Nickname: {user.nickname.toString().toUpperCase()}</p>
           <p>Email: {user.email}</p>
           <p>Registered: {user.createdAt.toString()}</p>
