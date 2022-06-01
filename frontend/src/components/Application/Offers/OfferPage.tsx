@@ -13,7 +13,6 @@ export const OfferPage = () => {
   const offer_id = parseInt(id!);
   const {data, error} = useSWR(`http://localhost:4000/offer/${offer_id}`, fetcher);
   const navigate = useNavigate();
-  console.log(data);
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
   const offer: Offer = data.data;

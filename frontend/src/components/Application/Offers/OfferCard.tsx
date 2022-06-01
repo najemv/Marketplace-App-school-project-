@@ -8,7 +8,6 @@ export const OfferCard = ({id, title, price, place, author, photos, finished}: O
   const formatPrice = function (amount: number): string {
     return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") + "€";
   };
-  console.log(photos);
   const formattedPrice = formatPrice(price);
   const mainImage = photos?.at(0)?.path;
 

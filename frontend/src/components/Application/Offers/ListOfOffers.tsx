@@ -7,9 +7,7 @@ import OfferCard from "./OfferCard";
 
 export const ListOfOffers = () => {
   const {id} = useParams();
-  console.log(id);
   const cat_id = parseInt(id!);
-  console.log(cat_id);
   let name: string;
   let offers: OfferPreview[];
 
