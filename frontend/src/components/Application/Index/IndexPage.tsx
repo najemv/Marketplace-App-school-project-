@@ -4,7 +4,7 @@ import ListOfOffers from "../Offers/ListOfOffers";
 export const IndexPage = () => {
 
   return (
-    <div className="flex">
+    <div className="flex flex-col lg:flex-row">
       <Navigation />
       <ListOfOffers />
     </div>
