@@ -8,14 +8,15 @@ export const OfferCard = ({id, title, price, place, author, photos, finished}: O
   const formatPrice = function (amount: number): string {
     return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") + "€";
   };
-
+  console.log(photos);
   const formattedPrice = formatPrice(price);
+  const mainImage = photos?.at(0)?.path;
 
   return (
     <li className="hover:bg-gray-200 h-48 w-full flex flex-row">
       <Link to={`/offer/${id}-${title.toLowerCase()}`} className="m-5 flex w-full">
         <div className="w-1/6">
-          <img className="h-36" src={offerPhoto} alt="Offer's image"/>
+          <img className="h-36" src={'http://localhost:4000/static/offer-photos/'+ mainImage} alt="Offer's image"/>
         </div>
         <div className="ml-3 w-2/6 justify-start">
           <h1 className="text-3xl">{title}</h1>
@@ -23,7 +24,7 @@ export const OfferCard = ({id, title, price, place, author, photos, finished}: O
           <p className="text-1xl">{author.nickname.toString().toUpperCase()}</p>
         </div>
         <div className="w-3/6 justify-end flex">
-          <p className="text-5xl text-medium-candy-apple-red font-bold">{formattedPrice}</p>
+          <p className="text-3xl text-medium-candy-apple-red font-bold">{formattedPrice}</p>
         </div>
       </Link>
     </li>
