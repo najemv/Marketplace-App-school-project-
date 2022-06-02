@@ -13,7 +13,7 @@ users:
         categories:
           - name: "car"
         photos:
-          - path: "vw-gold-3.jpg"
+          - path: "vw-golf-3.jpg"
             description: "brm brm deutsch"
       - title: "Audi A6 Kombi"
         description: "Vitaz Tuning zraz 2012 - kategoria Srot roka"
