@@ -59,10 +59,17 @@ export const OfferPage = () => {
               <p>Created at: {offer.createdAt.toString()}</p>
 
             </div>
-            <button
-              className="btn mt-10 inline-block px-6 py-2 border-2 border-imperial-red text-imperial-red font-medium text-3xl leading-tight uppercase rounded hover:bg-medium-candy-apple-red focus:text-mint-cream hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
-              BUY
-            </button>
+            {offer.finished &&
+              <div className="text-3xl text-medium-candy-apple-red">
+                  SOLD
+              </div>
+            }
+            {!offer.finished &&
+              <button
+                className="btn mt-10 inline-block px-6 py-2 border-2 border-imperial-red text-imperial-red font-medium text-3xl leading-tight uppercase rounded hover:bg-medium-candy-apple-red focus:text-mint-cream hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
+                BUY
+              </button>
+            }
           </div>
         </div>
       </div>
