@@ -51,7 +51,7 @@ export const Edit = (user: User) => {
   }
 
   return (
-    <div className="grid place-items-center mt-20">
+    <div className="grid place-items-center mt-16">
       <form className="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4 w-96" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col flex-wrap -mx-3 mb-6">
           <div className="w-full px-3 mb-6">
@@ -133,6 +133,19 @@ export const Edit = (user: User) => {
               placeholder="Enter something about yourself"
               {...register("about")}
             />
+          </div>
+          <div className="w-full px-3 mb-6">
+            <label className="block text-gray-700 text-sm font-bold mb-2"
+                   htmlFor="profilePicture">
+              Profile picture
+            </label>
+            <input
+              type="file"
+              className="w-full py-2 px-3 text-gray-700 leading-tight border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
+              id="profilePicture"
+              {...register("profilePicture")}
+            />
+            <ErrorMessage errors={errors} name="profilePicture" />
           </div>
           <div className="flex justify-center">
             <div>
