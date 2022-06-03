@@ -3,7 +3,7 @@ users:
     nickname: "jozinko"
     password: "heslo"
     profilePicture: "User-profil-pic-2.png"
-    description: "Ahoj já jsem jozko ma mam super nabídky"
+    description: "Ahoj já jsem jožko a mám super nabídky"
     offers:
       - title: "VW Golf 3"
         description: "Cipnuty golfik, v podstate ferrari"
@@ -41,7 +41,7 @@ users:
     nickname: "feri"
     password: "password"
     profilePicture: "User-profil-pic-3.png"
-    description: "Ferko jsem líný si psát popisek"
+    description: "Jsem Ferko a mám rád železo"
     offers:
       - title: "Hrniec"
         description: "Novy hrniec, dovod predaja: nehreje sam od seba"
@@ -54,7 +54,7 @@ users:
           - path: "hrnec.jpg"
             description: "kiss the cook"
       - title: "Kladivo"
-        description: "bum bum a vas problem je prec"
+        description: "Bum bum a vas problem je prec"
         price: 300.0
         place: "Sladkovicovo"
         finished: True
@@ -62,7 +62,7 @@ users:
           - name: "tools"
         photos:
           - path: "kladivo.jpg"
-            description: "bum rum bum"
+            description: "Bum rum bum"
   - email: "test@test.test"
     nickname: "test"
     password: "37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578"
