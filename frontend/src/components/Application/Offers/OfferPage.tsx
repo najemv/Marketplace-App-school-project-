@@ -39,7 +39,7 @@ export const OfferPage = () => {
               height={500}
               images={images}
               showBullets={true}
-              showNavs={true}
+              showNavs={false}
             />
             </div>
             <div className="lg:hidden">
