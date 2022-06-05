@@ -33,16 +33,17 @@ export const Filter = () => {
 
   return (
     <div>
-      <form className="flex m-5" onSubmit={handleSubmit(onSubmit)} onReset={onReset}>
+      <form className="flex flex-wrap m-4 justify-center" onSubmit={handleSubmit(onSubmit)} onReset={onReset}>
+        <div className="flex p-2">
       <label
         className="block text-gray-700 text-sm font-bold m-2"
         htmlFor="price-from">
         From:
       </label>
       <input
-        className="shadow appearance-none border rounded w-20 py-2 px-3 text-gray-700 leading-tight border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
+        className="shadow appearance-none border rounded w-20 text-gray-700 leading-tight border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
         id="price-from"
-        type="number" 
+        type="number"
         min={0}
         {...register("priceFrom")}
       />
@@ -59,7 +60,8 @@ export const Filter = () => {
         min={0}
         {...register("priceTo")}
       />
-
+        </div>
+        <div className="flex p-2">
       <label
         className="block text-gray-700 text-sm font-bold m-2"
         htmlFor="place">
@@ -72,7 +74,8 @@ export const Filter = () => {
         placeholder="Place..."
         {...register("place")}
       />
-      
+        </div>
+        <div className="flex p-2">
       <label
         className="block text-gray-700 text-sm font-bold m-2"
         htmlFor="sorting">
@@ -88,7 +91,8 @@ export const Filter = () => {
         <option value="lowestPrice">Lowest price</option>
         <option value="highestPrice">Highest price</option>
       </select>
-
+        </div>
+        <div className="flex p-2">
       <button
         className="bg-imperial-red hover:bg-medium-candy-apple-red text-white font-bold py-2 px-4 mx-2 rounded border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
         type="submit">
@@ -99,8 +103,9 @@ export const Filter = () => {
         type="reset">
         Reset
       </button>
+        </div>
       </form>
-      
+
     </div>
   );
 };
