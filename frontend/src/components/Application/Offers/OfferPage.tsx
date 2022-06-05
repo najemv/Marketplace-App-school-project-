@@ -16,8 +16,12 @@ export const OfferPage = () => {
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
   const offer: Offer = data.data;
-  const mainImage = offer.photos.at(0)?.path;
-  const images = offer.photos.map(x => 'http://localhost:4000/static/offer-photos/' + x.path);
+  let mainImage = offer.photos.at(0)?.path;
+  let images = offer.photos.map(x => x.path);
+  if (mainImage === undefined) {
+    mainImage = offerPhoto;
+    images.push(offerPhoto);
+  }
 
   const formatPrice = function (amount: number): string {
     return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") + "€";
@@ -43,7 +47,7 @@ export const OfferPage = () => {
             />
             </div>
             <div className="lg:hidden">
-              <img src={images.at(0)} alt="offer image" />
+              <img src={mainImage} alt="offer image" />
             </div>
           </div>
           <div className="lg:w-1/4">

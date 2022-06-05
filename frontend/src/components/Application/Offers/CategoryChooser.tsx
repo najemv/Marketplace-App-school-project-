@@ -21,7 +21,7 @@ export const CategoryChooser = ({order, register}: CategoryChooserProps) => {
       className="w-full my-1"
       {...register(`category${order}`)}
     >
-      {categories.map((cat) => <option value={cat.id}>{cat.name}</option>)}
+      {categories.map((cat) => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
     </select>
   );
 };

@@ -8,7 +8,7 @@ interface ImageChooserProps {
 export const ImageChooser = ({order, register}: ImageChooserProps) => {
 
   return (
-    <div>
+    <div className="border p-1 my-2">
       <label className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor={`image${order}`}>
         Image {order}:

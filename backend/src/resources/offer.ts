@@ -91,7 +91,7 @@ const offerCreateSchema = object({
   description: string(),
   price: number().required(),
   place: string().required(),
-  authorId: number().required(),
+  authorNickname: string().required(),
   categories: array(number()).required(),
   photos: array(object({
     path: string().required(),
@@ -102,13 +102,27 @@ const offerCreateSchema = object({
 export const createOffer = async (req: Request, res: Response) => {
   try {
     const data = await offerCreateSchema.validate(req.body);
+
+    const author = await prisma.user.findUnique({
+      where: {
+        nickname: data.authorNickname
+      }
+    });
+    if (author == null) {
+      return res.status(400).send({
+        status: "error",
+        data: {},
+        message: "Invalid nickname."
+      });
+    }
+    
     const newOffer = await prisma.offer.create({
       data: {
         title: data.title,
         description: data.description || "",
         price: data.price,
         place: data.place,
-        authorId: data.authorId,
+        authorId: author.id,
         categories: {
           connect : data.categories.map((cat) => {
             return { id: cat};

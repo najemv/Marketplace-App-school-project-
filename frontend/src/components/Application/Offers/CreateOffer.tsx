@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import serverAddress from "../../../serverAddress";
@@ -30,18 +30,21 @@ const generateCategoryChoosers = (count: number, register: Function) => {
 
 const getImages = async (data: any) => {
   let i = 1;
-  const images: [string, string][] = [];
+  const images: any[] = [];
   while (true) {
     const file = data[`image${i}`];
     const description = data[`image${i}Description`];
-    if (file === undefined || description == undefined) {
+    if (file === undefined || file[0] === undefined || description ===undefined) {
       break;
     }
 
     const profilePictureLink = await imageUploader(file[0]);
 
     let a: [number, number] = [2, 3];
-    images.push([profilePictureLink, description]);
+    images.push({
+      path: profilePictureLink,
+      description: description
+    });
     i++;
   }
 
@@ -79,13 +82,31 @@ export const CreateOffer = () => {
 
   const onSubmit = async (data: any) => {
     console.log(data);
-    const images = await getImages(data);
-    const categories = getCategories(data);
-    console.log(images);
-    console.log(categories);
-    //const createdOffer = await axios.post(`${serverAddress}/offer`, data);
+    
+    try {
+      const images = await getImages(data);
+      const categories = getCategories(data);
 
-    //navigate(`/offer/${createdOffer.data.id}`, {replace: true});
+      const req = {
+        title: data.title,
+        description: data.description,
+        price: data.price,
+        place: data.place,
+        authorNickname: loginData.nickname,
+        categories: categories,
+        photos: images
+      }
+      console.log(req);
+
+      const createdOffer = await axios.post(`${serverAddress}/offer`, req);
+      console.log(createdOffer);
+      navigate(`/offer/${createdOffer.data.data.id}-${createdOffer.data.data.title.toLowerCase()}`, {replace: true});
+    } catch (err) {
+      const e = err as AxiosError;
+      if (e.response) {
+        console.log(e.response.data)
+      }
+    }
   };
 
   const imageChoosers = generateImageChoosers(photosCount, register);
@@ -163,22 +184,24 @@ export const CreateOffer = () => {
             <span className="block text-gray-700 text-sm font-bold mb-2">Categories:</span>
             {
               categoryChoosers
-              
             }
             
             <button
               className="bg-imperial-red hover:bg-medium-candy-apple-red text-white font-bold py-2 px-4 rounded border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
+              type="button"
               onClick={() => setCategoriesCount(c => c + 1)}
             >
               +
             </button>
-            
+          </div>
+          <div className="w-full px-3 mb-6">
             <span className="block text-gray-700 text-sm font-bold mb-2">Images:</span>
             {
               imageChoosers
             }
             <button
               className="bg-imperial-red hover:bg-medium-candy-apple-red text-white font-bold py-2 px-4 rounded border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
+              type="button"
               onClick={() => setPhotosCount(c => c + 1)}
             >
               +
@@ -190,7 +213,7 @@ export const CreateOffer = () => {
               <button
                 className="bg-imperial-red hover:bg-medium-candy-apple-red text-white font-bold py-2 px-4 rounded border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
                 type="submit">
-                Register
+                Create
               </button>
             </div>
           </div>
