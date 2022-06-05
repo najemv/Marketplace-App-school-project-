@@ -22,13 +22,14 @@ export const Login = () => {
         nickname: data.nickname,
         password: hashedPassword
       });
-      
-      setLoginData({
+      const loginData = {
         isLoggedIn: true,
         nickname: data.nickname,
         password: hashedPassword
-      });
+      };
+      setLoginData(loginData);
       setErrorMsg("");
+      localStorage.setItem('loginData', JSON.stringify(loginData));
       navigate("/", {replace: true});
       
     } catch (err) {

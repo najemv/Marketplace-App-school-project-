@@ -1,6 +1,6 @@
 import {atom} from 'recoil';
-import { User } from '../types';
-import { LoginData } from '../types/user';
+import { OfferPreview, User } from '../types';
+import { IFilter, LoginData } from '../types/user';
 
 export const loginDataAtom = atom<LoginData>({
   key: 'loginData',
@@ -8,5 +8,15 @@ export const loginDataAtom = atom<LoginData>({
     isLoggedIn: false,
     nickname: "",
     password: ""
+  }
+});
+
+export const filterAtom = atom<IFilter>({
+  key: 'filter',
+  default: {
+    priceFrom: 0,
+    priceTo: Number.MAX_VALUE,
+    place: "",
+    sorting: "newest"
   }
 });

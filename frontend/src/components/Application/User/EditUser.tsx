@@ -1,6 +1,6 @@
 import {useForm} from "react-hook-form";
 import {useState} from "react";
-import {useSetRecoilState} from "recoil";
+import {useRecoilState, useSetRecoilState} from "recoil";
 import {loginDataAtom} from "../../../state/atom";
 import {hashMessage} from "../../../utils/hash";
 import axios, {AxiosError} from "axios";
@@ -8,42 +8,66 @@ import serverAddress from "../../../serverAddress";
 import Info from "../Misc/Info";
 import {ErrorMessage} from "@hookform/error-message";
 import {User} from "../../../types";
-
+import { useNavigate } from "react-router-dom";
+import arrayBufferToBase64 from "../../../utils/encoder";
+import { imageUploader } from "../../../utils/imageUploader";
 
 export const Edit = (user: User) => {
   const { register, handleSubmit, formState: {errors} } = useForm();
   const [errorMsg, setErrorMsg] = useState("");
   const [confirmation, setConfirmation] = useState(false);
-  const setLoginData = useSetRecoilState(loginDataAtom);
+  const [loginData, setLoginData] = useRecoilState(loginDataAtom);
+  const navigate = useNavigate();
 
   const onSubmit = async (data: any) => {
-
+    try {
+      
+      let profilePicture: string | undefined = undefined;
+      if (data.profilePicture.length > 0) {
+        profilePicture = await imageUploader(data.profilePicture[0]);
+      }
+      
+      const password = (data.password) ? await hashMessage(data.password) : loginData.password;
+      const req = {
+        // TODO
+        profilePicture: profilePicture,
+        description: data.description,
+        email: data.email,
+        password: password,
+      }
+      console.log(req);
+      const res = await axios.put(`${serverAddress}/user/${user.nickname}`,req);
+      setLoginData({
+        isLoggedIn: true,
+        nickname: loginData.nickname,
+        password: password
+      });
+      navigate(`/user/${user.nickname}`);
+    } catch (err) {
+      const e = err as AxiosError;
+      if (e.response) {
+        console.log(e.response.data)
+        setErrorMsg(e.response.data.message);
+      }
+    }
   };
 
   const validateEmail = async (email: string) => {
+    if (email == user.email) {
+      return true;
+    }
+
     try {
       const res = await axios.post(`${serverAddress}/user/check`, {email});
       return res.data.data.exists === false || "Email is taken";
     } catch (err) {
       const e = err as AxiosError;
       if (e.response) {
-        setErrorMsg(e.message);
+        setErrorMsg(e.response.data.message);
       }
     }
   };
 
-  const validateNickname = async (nickname: string) => {
-    try {
-      const res = await axios.post(`${serverAddress}/user/check`, {nickname});
-      return res.data.data.exists == false || "Nickname is taken";
-    } catch (err) {
-      const e = err as AxiosError;
-      if (e.response) {
-        setErrorMsg(e.message);
-      }
-    }
-    return "Error";
-  };
 
 
   if (confirmation) {
@@ -60,7 +84,7 @@ export const Edit = (user: User) => {
               Email
             </label>
             <input
-              value={user.email}
+              defaultValue={user.email}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
               id="grid-first-name"
               type="text"
@@ -76,37 +100,7 @@ export const Edit = (user: User) => {
             />
             <ErrorMessage errors={errors} name="email" />
           </div>
-          <div className="w-full px-3 mb-6">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="nickname">
-              Nickname
-            </label>
-            <input
-              value={user.nickname}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
-              id="nickname"
-              type="text"
-              placeholder="Enter nickname"
-              {...register("nickname", {
-                required: "Nickname is required",
-                minLength: {
-                  value: 2,
-                  message: "Must be between 2 and 32 characters"
-                },
-                maxLength: {
-                  value: 32,
-                  message: "Must be between 2 and 32 characters"
-                },
-                pattern: {
-                  value: /^[A-Z0-9._-]+$/i,
-                  message: "Only characters, digits, and . _ - are allowed"
-                },
-                validate: validateNickname
-              })}
-            />
-            <ErrorMessage errors={errors} name="nickname" />
-          </div>
+
           <div className="w-full px-3 mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2"
                    htmlFor="password">
@@ -127,11 +121,11 @@ export const Edit = (user: User) => {
               About
             </label>
             <textarea
-              value={user.description}
+              defaultValue={user.description}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
               id="about"
               placeholder="Enter something about yourself"
-              {...register("about")}
+              {...register("description")}
             />
           </div>
           <div className="w-full px-3 mb-6">

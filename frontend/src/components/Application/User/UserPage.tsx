@@ -25,7 +25,7 @@ export const UserPage = () => {
         </div>
         <div className="flex mx-4 lg:flex-col">
           <div className="flex justify-center mb-4 w-1/3 lg:w-full">
-            <img className="h-52 rounded-full" src={'http://localhost:4000/static/user-photos/'+user.profilePicture} alt="User Photo"/>
+            <img className="h-52 rounded-full" src={user.profilePicture} alt="User Photo"/>
           </div>
           <div className="ml-8">
             <p>Nickname: {user.nickname.toString().toUpperCase()}</p>

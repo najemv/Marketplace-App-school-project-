@@ -25,11 +25,13 @@ export const Register = () => {
       });
 
       setConfirmation(true);
-      setLoginData({
+      const loginData = {
         isLoggedIn: true,
         nickname: data.nickname,
         password: hashedPassword
-      });
+      };
+      setLoginData(loginData);
+      localStorage.setItem('loginData', JSON.stringify(loginData));
     }
     catch (err) {
       const e = err as AxiosError;

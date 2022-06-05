@@ -12,7 +12,6 @@ export const OffersPage = () => {
         <Route path="/:id" element={<ListOfOffers/>}/>
         <Route path="/" element={<ListOfOffers/>}/>
       </Routes>
-
     </div>
   );
 };

@@ -31,7 +31,7 @@ export const UserInfo = ({nickname}: UserInfoProps) => {
 
     <li className="lg:p-5 mr-5 lg:mt-5 lg:mb-5">
       <PopupMenu element={<img
-        src={'http://localhost:4000/static/user-photos/'+user.profilePicture}
+        src={user.profilePicture}
         alt="Profile picture"
         className="h-10 rounded-full"
       />}>

@@ -14,6 +14,7 @@ export const ApplicationPage = () => {
       <Header/>
       <Routes>
         <Route path="offers/*" element={<OffersPage/>}/>
+        <Route path="search/:content/*" element={<OffersPage/>}/>
         <Route path='user/:name/edit' element={<EditUserPage />}/>
         <Route path='user/:name' element={<UserPage/>}/>
         <Route path="offer/create" element={<CreateOffer />}/>

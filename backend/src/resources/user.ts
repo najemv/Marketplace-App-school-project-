@@ -69,16 +69,14 @@ export const createUser = async (req: Request, res: Response) => {
 
 const userUpdateSchema = object({
   email: string().email(),
-  password: string().length(100),
+  password: string().max(100),
   profilePicture: string(),
-  description: string()
-  //TODO
+  description: string().max(1000)
 });
 
 export const UpdateUser = async (req: Request, res: Response) => {
   try {
     const nickname = req.params.nickname!;
-    
     if (!(await isNicknameTaken(nickname))) {
       return res.status(400).send({
         status: "error",
@@ -86,17 +84,8 @@ export const UpdateUser = async (req: Request, res: Response) => {
         message: "User does not exists"
       });
     }
-
     const data = await userUpdateSchema.validate(req.body);
-
-    //if (data.email !== undefined && (await isEmailTaken(data.email))) {
-    //  return res.status(400).send({
-    //    status: "error",
-    //    data: {},
-    //    message: "Email is taken by other user"
-    //  });
-    //}
-
+    
     await prisma.user.update({
       where: {
         nickname: nickname
@@ -211,7 +200,7 @@ export const login = async (req: Request, res: Response) => {
         message: "Nickname does not exists"
       });
     }
-    
+
     if (user.password != data.password) {
       return res.status(400).send({
         status: "error",
