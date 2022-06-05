@@ -7,12 +7,70 @@ import Info from "../Misc/Info";
 import {ErrorMessage} from "@hookform/error-message";
 import {useForm} from "react-hook-form";
 import {useState} from "react";
+import ImageChooser from "./ImageChooser";
+import CategoryChooser from "./CategoryChooser";
+import { imageUploader } from "../../../utils/imageUploader";
+
+
+const generateImageChoosers = (count: number, register: Function) => {
+  let result: any = [];
+  for (let i = 1; i <= count; i++) {
+    result.push(<ImageChooser key={i} order={i} register={register}/>);
+  }
+  return result;
+};
+
+const generateCategoryChoosers = (count: number, register: Function) => {
+  let result: any = [];
+  for (let i = 1; i <= count; i++) {
+    result.push(<CategoryChooser key={i} order={i} register={register}/>);
+  }
+  return result;
+};
+
+const getImages = async (data: any) => {
+  let i = 1;
+  const images: [string, string][] = [];
+  while (true) {
+    const file = data[`image${i}`];
+    const description = data[`image${i}Description`];
+    if (file === undefined || description == undefined) {
+      break;
+    }
+
+    const profilePictureLink = await imageUploader(file[0]);
+
+    let a: [number, number] = [2, 3];
+    images.push([profilePictureLink, description]);
+    i++;
+  }
+
+  return images;
+};
+
+const getCategories = (data: any) => {
+  let i = 1;
+  const categories: number[] = [];
+  while (true) {
+    const category = data[`category${i}`]
+    console.log(category)
+    if (category === undefined) {
+      break;
+    }
+    categories.push(Number(category));
+    i++;
+  }
+
+  return categories;
+};
 
 
 export const CreateOffer = () => {
   const { register, handleSubmit, formState: {errors} } = useForm();
   const [errorMsg, setErrorMsg] = useState("");
   const loginData = useRecoilValue(loginDataAtom);
+  const [photosCount, setPhotosCount] = useState(1);
+  const [categoriesCount, setCategoriesCount] = useState(1);
   const navigate = useNavigate();
 
   if (!loginData.isLoggedIn) {
@@ -20,9 +78,18 @@ export const CreateOffer = () => {
   }
 
   const onSubmit = async (data: any) => {
-    const createdOffer = await axios.post(`${serverAddress}/offer`, data);
-    navigate(`/offer/${createdOffer.data.id}`, {replace: true});
+    console.log(data);
+    const images = await getImages(data);
+    const categories = getCategories(data);
+    console.log(images);
+    console.log(categories);
+    //const createdOffer = await axios.post(`${serverAddress}/offer`, data);
+
+    //navigate(`/offer/${createdOffer.data.id}`, {replace: true});
   };
+
+  const imageChoosers = generateImageChoosers(photosCount, register);
+  const categoryChoosers = generateCategoryChoosers(categoriesCount, register);
 
   return (
     <div className="grid place-items-center mt-12">
@@ -42,22 +109,41 @@ export const CreateOffer = () => {
             />
             <ErrorMessage errors={errors} name="title" />
           </div>
-          <div className="w-full px-3 mb-6">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="place">
-              Place
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
-              id="place"
-              type="text"
-              placeholder="Enter place of selling"
-              {...register("place", {
-                required: "Place is required"
-              })}
-            />
-            <ErrorMessage errors={errors} name="place" />
+          <div className="flex">
+            <div className="flex-1 w-45 px-3 mb-6">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="place">
+                Place
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
+                id="place"
+                type="text"
+                placeholder="Enter place of selling"
+                {...register("place", {
+                  required: "Place is required"
+                })}
+              />
+              <ErrorMessage errors={errors} name="place" />
+            </div>
+            <div className="flex-1 px-3 mb-6">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="price">
+                Price
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
+                id="price"
+                type="number"
+                min={0}
+                {...register("price", {
+                  required: "Price is required"
+                })}
+              />
+              <ErrorMessage errors={errors} name="price" />
+            </div>        
           </div>
           <div className="w-full px-3 mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2"
@@ -72,18 +158,32 @@ export const CreateOffer = () => {
             />
             <ErrorMessage errors={errors} name="description" />
           </div>
+          
           <div className="w-full px-3 mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2"
-                   htmlFor="images">
-              Images
-            </label>
-            <input
-              type="file"
-              className="w-full py-2 px-3 text-gray-700 leading-tight border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
-              id="images"
-              {...register("images")}
-            />
-            <ErrorMessage errors={errors} name="images" />
+            <span className="block text-gray-700 text-sm font-bold mb-2">Categories:</span>
+            {
+              categoryChoosers
+              
+            }
+            
+            <button
+              className="bg-imperial-red hover:bg-medium-candy-apple-red text-white font-bold py-2 px-4 rounded border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
+              onClick={() => setCategoriesCount(c => c + 1)}
+            >
+              +
+            </button>
+            
+            <span className="block text-gray-700 text-sm font-bold mb-2">Images:</span>
+            {
+              imageChoosers
+            }
+            <button
+              className="bg-imperial-red hover:bg-medium-candy-apple-red text-white font-bold py-2 px-4 rounded border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
+              onClick={() => setPhotosCount(c => c + 1)}
+            >
+              +
+            </button>
+
           </div>
           <div className="flex justify-center">
             <div>

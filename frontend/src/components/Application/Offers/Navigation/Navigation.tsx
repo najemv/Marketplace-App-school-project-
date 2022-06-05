@@ -1,11 +1,12 @@
 import useSWR from "swr";
+import serverAddress from "../../../../serverAddress";
 import {CategoryPreview} from "../../../../types";
 import fetcher from "../../../../utils/fetcher";
 import CategoryCard from "./CategoryCard";
 
 export const Navigation = () => {
 
-  const {data, error} = useSWR(`http://localhost:4000/category`, fetcher);
+  const {data, error} = useSWR(`${serverAddress}/category`, fetcher);
 
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;

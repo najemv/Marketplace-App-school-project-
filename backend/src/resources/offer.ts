@@ -7,6 +7,9 @@ import { assert } from 'console';
 
 export const getAll = async (req: Request, res: Response) => {
   const offers = await prisma.offer.findMany({
+    where: {
+      finished: false
+    },
     select: {
       id: true,
       title: true,
@@ -85,7 +88,7 @@ export const getById = async (req: Request, res: Response) => {
 
 const offerCreateSchema = object({
   title: string().required(),
-  description: string().required(),
+  description: string(),
   price: number().required(),
   place: string().required(),
   authorId: number().required(),
@@ -102,7 +105,7 @@ export const createOffer = async (req: Request, res: Response) => {
     const newOffer = await prisma.offer.create({
       data: {
         title: data.title,
-        description: data.description,
+        description: data.description || "",
         price: data.price,
         place: data.place,
         authorId: data.authorId,
