@@ -25,12 +25,12 @@ export const UserPage = () => {
         </div>
         <div className="flex mx-4 lg:flex-col">
           <div className="flex justify-center mb-4 w-1/3 lg:w-full">
-            <img className="h-52 rounded-full" src={user.profilePicture} alt="User Photo"/>
+            <img className="object-contain rounded-full" src={user.profilePicture} alt="User Photo"/>
           </div>
           <div className="ml-8">
-            <p>Nickname: {user.nickname.toString().toUpperCase()}</p>
+            <p className="text-xl font-bold">Nickname: {user.nickname.toString().toUpperCase()}</p>
             <p>Email: {user.email}</p>
-            <p>Registered: {user.createdAt.toString()}</p>
+            <p>Registered: {new Date(user.createdAt).toDateString()}</p>
             <p>Popis: {user.description}</p>
             {(loginData.isLoggedIn && loginData.nickname == user.nickname) &&
                 <Link to="edit">
