@@ -9,7 +9,7 @@ import UserInfo from "./UserInfo";
 export const Header = () => {
   const loginData = useRecoilValue(loginDataAtom);
   return (
-    <header className="sticky top-0 z-50 bg-space-cadet h-48 lg:h-20 flex flex-col lg:flex-row justify-between items-center">
+    <header className="lg:sticky top-0 z-50 bg-space-cadet h-48 lg:h-20 flex flex-col lg:flex-row justify-between items-center">
       <Logo/>
       <Searchbar/>
       <div className="h-5 mb-8 lg:h-20">
