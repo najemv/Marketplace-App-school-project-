@@ -6,13 +6,12 @@ import Navigation from "./Navigation/Navigation";
 export const OffersPage = () => {
 
   return (
-    <div className="flex ">
+    <div className="flex flex-col lg:flex-row">
       <Navigation/>
       <Routes>
         <Route path="/:id" element={<ListOfOffers/>}/>
         <Route path="/" element={<ListOfOffers/>}/>
       </Routes>
-
     </div>
   );
 };

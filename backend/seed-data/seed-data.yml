@@ -1,9 +1,9 @@
 users:
   - email: "jozkomrkvicka@gmail.com"
     nickname: "jozinko"
-    password: "heslo"
-    profilePicture: "../static/user-photos/default-avatar-profile-icon.png"
-    description: "Ahoj já jsem jozko ma mam super nabídky"
+    password: "9fece1364ea926b9fc1d6db615a25b9ec56fe7239542c8929ae9309b8fbb22d0"
+    profilePicture: "https://thumbsnap.com/i/nydpH5wU.jpg"
+    description: "Ahoj já jsem jožko a mám super nabídky"
     offers:
       - title: "VW Golf 3"
         description: "Cipnuty golfik, v podstate ferrari"
@@ -11,60 +11,115 @@ users:
         place: "Senica"
         finished: False
         categories:
-          - name: "car"
+          - name: "Car"
         photos:
-          - path: "../static/offer-photos/default-image.png"
-            description: "pls edit me"
+          - path: "https://thumbsnap.com/i/45nbz5rw.jpg"
+            description: "brm brm deutsch"
+          - path: "https://thumbsnap.com/i/h2mefsgj.jpg"
+            description: "jako nový"
       - title: "Audi A6 Kombi"
         description: "Vitaz Tuning zraz 2012 - kategoria Srot roka"
         price: 78500.0
         place: "Kuty"
         finished: False
         categories:
-          - name: "car"
+          - name: "Car"
         photos:
-          - path: "../static/offer-photos/default-image.png"
-            description: "pls edit me as well"
-          - path: "../static/offer-photos/default-image.png"
-            description: "pls edit me as well 2"
+          - path: "https://thumbsnap.com/i/3wgQ8yVa.jpg"
+            description: "first image"
+          - path: "https://thumbsnap.com/i/T6DGpd2Z.jpg"
+            description: "second image, better"
       - title: "Stolicka"
         description: "Vybite zuby count - 17, velmi pevna"
         price: 500.0
         place: "Bratislava"
         finished: False
         categories:
-          - name: "furniture"
+          - name: "Furniture"
         photos:
-          - path: "../static/offer-photos/default-image.png"
-            description: "pls edit me 3"
+          - path: "https://thumbsnap.com/i/RE7j3gVB.jpg"
+            description: "chair to sit"
   - email: "ferko@gmail.com"
     nickname: "feri"
-    password: "password"
-    profilePicture: "../static/user-photos/default-avatar-profile-icon.png"
-    description: "Ferko jsem líný si psát popisek"
+    password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"
+    profilePicture: "https://thumbsnap.com/i/PszwjJio.jpg"
+    description: "Jsem Ferko a mám rád železo"
     offers:
       - title: "Hrniec"
         description: "Novy hrniec, dovod predaja: nehreje sam od seba"
         price: 1000.0
-        place: "Kosice"
+        place: "Košice"
         finished: False
         categories:
-          - name: "kitchen"
+          - name: "Kitchen"
         photos:
-          - path: "../static/offer-photos/default-image.png"
-            description: "pls edit me"
+          - path: "https://thumbsnap.com/i/rnSHncU6.jpg"
+            description: "kiss the cook"
       - title: "Kladivo"
-        description: "bum bum a vas problem je prec"
+        description: "Bum bum a vas problem je prec"
         price: 300.0
         place: "Sladkovicovo"
         finished: True
         categories:
-          - name: "tools"
+          - name: "Tools"
         photos:
-          - path: "../static/offer-photos/default-image.png"
-            description: "pls edit me 3"
-  - email: "jankohrasko@gmail.com"
-    nickname: "hrasok"
-    password: "qwertz"
-    profilePicture: "../static/user-photos/default-avatar-profile-icon.png"
-    description: "Nemám žádné nabídky, jsem na stimulantech"
+          - path: "https://thumbsnap.com/i/M4PUU7LN.jpg"
+            description: "Bum rum bum"
+  - email: "topkek@gmail.com"
+    nickname: "TOPKEK"
+    password: "205d3063c5ea5638dad376300c4ecd17cdb92c1dc706cceadfa5c3b22edf3cef"
+    profilePicture: "https://thumbsnap.com/i/k7xRsJD1.jpg"
+    description: "Jsem na stimulantech"
+    offers:
+      - title: "LSD"
+        description: "Už toho mám moc a nechcu to."
+        price: 42.0
+        place: "Brno"
+        finished: False
+        categories:
+          - name: "Drugs"
+        photos:
+          - path: "https://thumbsnap.com/i/tfFZ1Tkb.jpg"
+            description: "Luxusní zboží"
+      - title: "Marihuana"
+        description: "Vlastnoručně vypěstovaná. 20g"
+        price: 100.0
+        place: "Brno"
+        finished: False
+        categories:
+          - name: "Drugs"
+        photos:
+          - path: "https://thumbsnap.com/i/YFbn8GX1.jpg"
+            description: "Venek čerstvě usušený"
+  - email: "oregizer@gmail.com"
+    nickname: "oregizer"
+    password: "ce555cdfe1f5fefa54da795dc0944d9baee871988167fba5614b3bd09decba48"
+    profilePicture: "https://thumbsnap.com/i/UYDi2gBY.jpg"
+    description: "Kdo nebenchuje alespoň 100kg, je slabý"
+    offers:
+      - title: "Bench lavice"
+        description: "Stěhuju se a potřebuju to prodat. Jako nová"
+        price: 200.0
+        place: "Brno"
+        finished: False
+        categories:
+          - name: "Sport"
+        photos:
+          - path: "https://thumbsnap.com/i/SK7WxMFP.jpg"
+            description: "Bench lavice"
+  - email: "linus@techtips.com"
+    nickname: "Linus"
+    password: "86b7b6cce537d4be23f97e479180a165d818909d9c576fcbd52c258b81eebb64"
+    profilePicture: "https://thumbsnap.com/i/RxQgGM9m.jpg"
+    description: "PC master race bitches"
+    offers:
+      - title: "Nvidia RTX 3080 GPU"
+        description: "Dont need it anymore, I've got 3090, this sucks."
+        price: 2000.0
+        place: "Texas"
+        finished: False
+        categories:
+          - name: "Tech"
+        photos:
+          - path: "https://thumbsnap.com/i/pszx9FyV.jpg"
+            description: "Nvidia gpu (amd better btw)"

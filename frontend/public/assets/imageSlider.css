@@ -1,0 +1,6 @@
+.rsis-container div{
+  background-size: contain !important;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-position: center;
+}

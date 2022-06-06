@@ -16,8 +16,9 @@ export const UserInfo = ({nickname}: UserInfoProps) => {
   const setLoginData = useSetRecoilState(loginDataAtom);
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
-  
+
   const user: User = data.data;
+  const photo = (user.profilePicture) ? user.profilePicture : userPhoto;
 
   const logOut = () => {
     setLoginData({
@@ -29,18 +30,22 @@ export const UserInfo = ({nickname}: UserInfoProps) => {
 
   return (
 
-    <li className="p-5 mr-5 mt-5 mb-5">
+    <li className="lg:p-5 mr-5 lg:mt-5 lg:mb-5">
       <PopupMenu element={<img
-        src={userPhoto}
+        src={photo}
         alt="Profile picture"
-        className="h-10"
+        className="h-10 rounded-full"
       />}>
-        <Link to={`/user/${user.nickname}`}>
-          <button>Show profile</button>
-        </Link>
-        <button onClick={logOut}>
-          Logout
-        </button>
+        <div className="h-10 px-3 border-2 border-medium-candy-apple-red hover:bg-medium-candy-apple-red">
+          <Link className="h-9  flex items-center" to={`/user/${user.nickname}`}>
+            <button className="text-xl w-max">Show profile</button>
+          </Link>
+        </div>
+        <div className="h-10 px-3 border-2 border-medium-candy-apple-red hover:bg-medium-candy-apple-red">
+          <button className="h-9 text-xl flex items-center" onClick={logOut}>
+            Logout
+          </button>
+        </div>
       </PopupMenu>
     </li>
   )

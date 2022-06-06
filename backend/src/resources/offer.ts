@@ -7,6 +7,9 @@ import { assert } from 'console';
 
 export const getAll = async (req: Request, res: Response) => {
   const offers = await prisma.offer.findMany({
+    where: {
+      finished: false
+    },
     select: {
       id: true,
       title: true,
@@ -61,6 +64,7 @@ export const getById = async (req: Request, res: Response) => {
         select: {
           nickname: true,
           profilePicture: true,
+          email: true
         }
       },
       categories: true,
@@ -85,10 +89,10 @@ export const getById = async (req: Request, res: Response) => {
 
 const offerCreateSchema = object({
   title: string().required(),
-  description: string().required(),
+  description: string(),
   price: number().required(),
   place: string().required(),
-  authorId: number().required(),
+  authorNickname: string().required(),
   categories: array(number()).required(),
   photos: array(object({
     path: string().required(),
@@ -99,13 +103,27 @@ const offerCreateSchema = object({
 export const createOffer = async (req: Request, res: Response) => {
   try {
     const data = await offerCreateSchema.validate(req.body);
+
+    const author = await prisma.user.findUnique({
+      where: {
+        nickname: data.authorNickname
+      }
+    });
+    if (author == null) {
+      return res.status(400).send({
+        status: "error",
+        data: {},
+        message: "Invalid nickname."
+      });
+    }
+    
     const newOffer = await prisma.offer.create({
       data: {
         title: data.title,
-        description: data.description,
+        description: data.description || "",
         price: data.price,
         place: data.place,
-        authorId: data.authorId,
+        authorId: author.id,
         categories: {
           connect : data.categories.map((cat) => {
             return { id: cat};

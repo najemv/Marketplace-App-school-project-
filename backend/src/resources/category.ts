@@ -29,6 +29,8 @@ export const get = async (req: Request, res: Response) => {
           title: true,
           price: true,
           place: true,
+          description: true,
+          createdAt: true,
           updatedAt: true,
           finished: true,
           author: {

@@ -7,7 +7,7 @@ interface HeaderItemProps {
 
 export const HeaderItem = ({text, linkTo}: HeaderItemProps) => {
   return (
-    <li className="p-5 mr-5 mt-5 mb-5">
+    <li className="lg:p-5 mr-5 lg:mt-6 lg:mb-5">
       <Link to={linkTo}>
         {text}
       </Link>

@@ -3,11 +3,11 @@ export interface UserPreview {
   id: number;
   nickname: string;
   profilePicture: string;
+  email: string;
 }
 
 export interface User extends UserPreview {
   description: string;
-  email: string;
   createdAt: Date;
   lastActivity: Date;
   offers: OfferPreview[];
@@ -28,15 +28,15 @@ export interface OfferPreview {
   title: string;
   price: number;
   place: string,
+  createdAt: Date,
   updatedAt: Date;
+  description: string;
   author: UserPreview,
   photos: Photo[],
   finished: boolean
 }
 
 export interface Offer extends OfferPreview {
-  description: string;
-  createdAt: Date;
   categories: CategoryPreview[]
 }
 

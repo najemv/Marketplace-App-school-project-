@@ -22,13 +22,14 @@ export const Login = () => {
         nickname: data.nickname,
         password: hashedPassword
       });
-      
-      setLoginData({
+      const loginData = {
         isLoggedIn: true,
         nickname: data.nickname,
         password: hashedPassword
-      });
+      };
+      setLoginData(loginData);
       setErrorMsg("");
+      localStorage.setItem('loginData', JSON.stringify(loginData));
       navigate("/", {replace: true});
       
     } catch (err) {
@@ -95,14 +96,14 @@ export const Login = () => {
         }
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-center">
           <button
             className="bg-imperial-red hover:bg-medium-candy-apple-red text-white font-bold py-2 px-4 rounded border-space-cadet focus:border-space-cadet focus:ring-0 focus:shadow-outline"
             type="submit">
             Sign In
           </button>
         </div>
-        
+
       </form>
     </div>
   );

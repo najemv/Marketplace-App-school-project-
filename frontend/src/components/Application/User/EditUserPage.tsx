@@ -5,6 +5,8 @@ import { loginDataAtom } from "../../../state/atom";
 import { User } from "../../../types";
 import fetcher from "../../../utils/fetcher";
 import Info from "../Misc/Info";
+import Navigation from "../Offers/Navigation/Navigation";
+import Edit from "./EditUser";
 
 export const EditUserPage = () => {
   const navigate = useNavigate();
@@ -14,7 +16,7 @@ export const EditUserPage = () => {
   const {data, error} = useSWR(`http://localhost:4000/user/${name}`, fetcher);
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
-  const user: User = data.data; 
+  const user: User = data.data;
 
   if (!loginData.isLoggedIn) {
     return <Info message="You must be logged in to perform this action" />;
@@ -24,11 +26,10 @@ export const EditUserPage = () => {
     return <Info message="You can't edit other profiles" />;
   }
 
-
-
-
   return (
-    <div>TODO EDIT USER PAGE</div>
+    <div>
+      <Edit {...user}/>
+    </div>
   );
 };
 

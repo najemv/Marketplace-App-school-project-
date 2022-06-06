@@ -4,7 +4,10 @@ import {category, offer, user} from "./resources";
 import { off } from "process";
 const api = express();
 const port = process.env.PORT ?? 4000;
+import path from 'path';
+const pathToFile = path.resolve(__dirname, '../public');
 
+api.use('/static', express.static(pathToFile));
 api.use(express.json());
 api.use(cors());
 
@@ -35,7 +38,7 @@ api.delete("/offer/:id", offer.deleteOffer);
 
 
 api.get("/user/:nickname", user.getUser);
-api.put("/user/:nickaname", user.UpdateUser);
+api.put("/user/:nickname", user.UpdateUser);
 
 api.post("/login", user.login);
 api.post("/register", user.createUser);
