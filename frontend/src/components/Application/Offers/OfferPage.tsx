@@ -28,6 +28,12 @@ export const OfferPage = () => {
   };
   const formattedPrice = formatPrice(offer.price);
 
+  const prettyDate = new Date(offer.createdAt).toLocaleString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  });
   return (
     <div className="m-5 flex">
       <div className="w-full">
@@ -60,7 +66,7 @@ export const OfferPage = () => {
               </Link>
 
               <p>{offer.description}</p>
-              <p>Created at: {offer.createdAt.toString()}</p>
+              <p>Created at: {prettyDate}</p>
 
             </div>
             {offer.finished &&

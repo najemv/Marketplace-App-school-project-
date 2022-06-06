@@ -17,6 +17,8 @@ export const UserPage = () => {
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
   const user: User = data.data;
+  const photo = (user.profilePicture) ? user.profilePicture : userPhoto;
+  
   return (
     <div className="m-2 lg:m-5 flex flex-col lg:flex-row">
       <div className="lg:w-1/4">
@@ -25,13 +27,13 @@ export const UserPage = () => {
         </div>
         <div className="flex mx-4 lg:flex-col">
           <div className="flex justify-center mb-4 w-1/3 lg:w-full">
-            <img className="object-contain rounded-full" src={user.profilePicture} alt="User Photo"/>
+            <img className="object-contain rounded-full" src={photo} alt="User Photo"/>
           </div>
           <div className="ml-8">
             <p className="text-xl font-bold">Nickname: {user.nickname.toString().toUpperCase()}</p>
             <p>Email: {user.email}</p>
             <p>Registered: {new Date(user.createdAt).toDateString()}</p>
-            <p>Popis: {user.description}</p>
+            <p>About me: {user.description}</p>
             {(loginData.isLoggedIn && loginData.nickname == user.nickname) &&
                 <Link to="edit">
                     <button

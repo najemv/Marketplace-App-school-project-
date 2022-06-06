@@ -18,6 +18,7 @@ export const UserInfo = ({nickname}: UserInfoProps) => {
   if (!data) return <div>loading...</div>;
 
   const user: User = data.data;
+  const photo = (user.profilePicture) ? user.profilePicture : userPhoto;
 
   const logOut = () => {
     setLoginData({
@@ -31,7 +32,7 @@ export const UserInfo = ({nickname}: UserInfoProps) => {
 
     <li className="lg:p-5 mr-5 lg:mt-5 lg:mb-5">
       <PopupMenu element={<img
-        src={user.profilePicture}
+        src={photo}
         alt="Profile picture"
         className="h-10 rounded-full"
       />}>

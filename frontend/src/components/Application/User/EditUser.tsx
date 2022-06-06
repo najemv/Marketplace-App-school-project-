@@ -9,7 +9,6 @@ import Info from "../Misc/Info";
 import {ErrorMessage} from "@hookform/error-message";
 import {User} from "../../../types";
 import { useNavigate } from "react-router-dom";
-import arrayBufferToBase64 from "../../../utils/encoder";
 import { imageUploader } from "../../../utils/imageUploader";
 
 export const Edit = (user: User) => {

@@ -1,6 +1,8 @@
+import axios from "axios";
 import { useEffect } from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import { useSetRecoilState } from "recoil";
+import serverAddress from "../serverAddress";
 import { loginDataAtom } from "../state/atom";
 import ApplicationPage from "./Application/ApplicationPage";
 import LoginPage from "./Login/LoginPage";
@@ -11,9 +13,17 @@ export const Pages = () => {
   const setLoginData = useSetRecoilState(loginDataAtom);
   // automatic login after page refresh
   useEffect(() => {
-    var loginData = localStorage.getItem('loginData');
-    if (loginData != null) {
-      setLoginData(JSON.parse(loginData));
+    var loginDataString = localStorage.getItem('loginData');
+    if (loginDataString != null) {
+      const loginData = JSON.parse(loginDataString);
+      
+      axios.post(`${serverAddress}/user/check`, {nickname: loginData.nickname})
+        .then((res) => {
+          if (res.data.data.exists) {
+            setLoginData(loginData);
+          }
+        })
+        .catch();
     }
   }, []);
   

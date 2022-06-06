@@ -22,7 +22,7 @@ export const OfferCard = ({id, title, price, place, author, photos, finished}: O
         </div>
         <div className="ml-2 lg:ml-0 w-full flex flex-col items-end lg:items-start lg:flex-row lg:justify-between">
         <div className="lg:ml-3 lg:w-2/6 flex flex-col lg:flex-none justify-start items-end lg:items-start lg:min-w-max">
-          <h1 className="whitespace-nowrap lg:text-2xl">{title}</h1>
+          <h1 className="whitespace-nowrap lg:text-2xl text-xl">{title}</h1>
           <p className="whitespace-nowrap lg:text-1xl">{place}</p>
           <p className="whitespace-nowrap lg:text-1xl">{author.nickname.toString().toUpperCase()}</p>
         </div>
