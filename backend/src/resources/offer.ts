@@ -64,6 +64,7 @@ export const getById = async (req: Request, res: Response) => {
         select: {
           nickname: true,
           profilePicture: true,
+          email: true
         }
       },
       categories: true,
